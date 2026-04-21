@@ -1,0 +1,319 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; }
+  :root {
+    --navy: #175190;
+    --crimson: #A41546;
+    --mauve: #896B85;
+    --pearl: #D6D1CF;
+    --pearl-light: #F5F3F2;
+    --white: #ffffff;
+  }
+
+  .page-wrap { background: var(--pearl-light); min-height: 100vh; }
+
+  /* Header */
+  .header { background: var(--navy); padding: 0; }
+  .header-top { background: var(--crimson); display: flex; justify-content: space-between; align-items: center; padding: 6px 24px; font-size: 12px; color: rgba(255,255,255,0.9); flex-wrap: wrap; gap: 4px; }
+  .header-top a { color: rgba(255,255,255,0.9); text-decoration: none; }
+  .header-main { display: flex; align-items: center; gap: 16px; padding: 14px 24px; }
+  .logo-circle { width: 52px; height: 52px; background: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .logo-inner { width: 38px; height: 38px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .logo-leaf { width: 20px; height: 20px; background: #4CAF87; border-radius: 50% 0 50% 0; transform: rotate(45deg); }
+  .school-name { color: var(--white); }
+  .school-name h1 { font-size: 20px; font-weight: 600; letter-spacing: 0.5px; }
+  .school-name p { font-size: 11px; color: var(--pearl); margin-top: 2px; }
+
+  /* Hero Banner */
+  .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a5fa8 50%, var(--mauve) 100%); padding: 36px 24px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -30px; right: -30px; width: 180px; height: 180px; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .hero::after { content: ''; position: absolute; bottom: -50px; left: -20px; width: 220px; height: 220px; border-radius: 50%; background: rgba(164,21,70,0.15); }
+  .hero-badge { display: inline-block; background: var(--crimson); color: var(--white); font-size: 11px; font-weight: 500; padding: 4px 14px; border-radius: 20px; margin-bottom: 12px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .hero h2 { color: var(--white); font-size: 26px; font-weight: 600; margin-bottom: 8px; }
+  .hero p { color: var(--pearl); font-size: 13px; max-width: 480px; margin: 0 auto; line-height: 1.6; }
+
+  /* Content */
+  .content { max-width: 900px; margin: 0 auto; padding: 24px 16px 40px; }
+
+  /* Section Cards */
+  .section-card { background: var(--white); border-radius: 10px; border: 1px solid var(--pearl); margin-bottom: 20px; overflow: hidden; }
+  .section-header { background: var(--navy); padding: 12px 20px; display: flex; align-items: center; gap: 10px; }
+  .section-num { background: var(--crimson); color: var(--white); font-size: 12px; font-weight: 600; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-title { color: var(--white); font-size: 14px; font-weight: 500; }
+
+  /* Info Rows */
+  .info-row { display: flex; border-bottom: 1px solid var(--pearl); }
+  .info-row:last-child { border-bottom: none; }
+  .info-label { background: var(--pearl-light); color: #555; font-size: 13px; padding: 11px 16px; width: 42%; flex-shrink: 0; font-weight: 500; border-right: 1px solid var(--pearl); line-height: 1.4; }
+  .info-value { color: #222; font-size: 13px; padding: 11px 16px; flex: 1; line-height: 1.5; }
+  .info-value a { color: var(--navy); text-decoration: none; font-weight: 500; }
+  .info-value a:hover { color: var(--crimson); }
+  .sub-label { font-size: 12px; color: var(--mauve); margin-bottom: 2px; }
+
+  /* View Button */
+  .view-btn { display: inline-flex; align-items: center; gap: 5px; background: var(--navy); color: var(--white); font-size: 12px; padding: 5px 14px; border-radius: 5px; text-decoration: none; font-weight: 500; transition: background 0.2s; }
+  .view-btn:hover { background: var(--crimson); color: var(--white); }
+  .view-btn-outline { display: inline-flex; align-items: center; gap: 5px; border: 1.5px solid var(--navy); color: var(--navy); font-size: 12px; padding: 4px 13px; border-radius: 5px; text-decoration: none; font-weight: 500; transition: all 0.2s; }
+  .view-btn-outline:hover { background: var(--navy); color: var(--white); }
+
+  /* Docs Grid */
+  .docs-grid { padding: 16px; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+  .doc-item { border: 1px solid var(--pearl); border-radius: 7px; padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px; background: var(--pearl-light); }
+  .doc-item:hover { border-color: var(--navy); background: #eef4fb; }
+  .doc-icon { width: 30px; height: 30px; background: var(--crimson); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .doc-icon svg { width: 16px; height: 16px; fill: none; stroke: white; stroke-width: 2; }
+  .doc-name { font-size: 12px; color: #333; font-weight: 500; flex: 1; line-height: 1.4; }
+  .doc-num { font-size: 11px; color: var(--mauve); margin-bottom: 2px; }
+
+  /* Stats row */
+  .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .stat-box { text-align: center; padding: 18px 12px; border-right: 1px solid var(--pearl); }
+  .stat-box:last-child { border-right: none; }
+  .stat-val { font-size: 22px; font-weight: 600; color: var(--navy); }
+  .stat-lbl { font-size: 11px; color: var(--mauve); margin-top: 3px; }
+
+  /* Affiliation badge */
+  .status-badge { display: inline-block; background: #e8f4ec; color: #2a7a4b; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; border: 1px solid #b5d9c3; }
+  .status-prov { background: #fff4e5; color: #a05a00; border-color: #f5c87a; }
+
+  /* Footer */
+  .footer { background: var(--navy); padding: 20px 24px; text-align: center; }
+  .footer p { color: var(--pearl); font-size: 12px; }
+  .footer span { color: var(--crimson); font-weight: 500; }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    .header-main { padding: 12px 16px; }
+    .school-name h1 { font-size: 16px; }
+    .hero { padding: 28px 16px; }
+    .hero h2 { font-size: 20px; }
+    .content { padding: 16px 12px 32px; }
+    .info-label { width: 46%; font-size: 12px; padding: 10px 12px; }
+    .info-value { font-size: 12px; padding: 10px 12px; }
+    .docs-grid { grid-template-columns: 1fr; padding: 12px; }
+    .stats-row { grid-template-columns: 1fr; }
+    .stat-box { border-right: none; border-bottom: 1px solid var(--pearl); }
+    .stat-box:last-child { border-bottom: none; }
+    .header-top { font-size: 11px; padding: 5px 14px; }
+  }
+</style>
+
+<div class="page-wrap">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-top">
+      <span>SPS: <a href="tel:+917413012351">+91 74130 12351</a> &nbsp;|&nbsp; SMHS: <a href="tel:+919587772837">+91 95877 72837</a></span>
+      <span>seedlingacademy@hotmail.com</span>
+    </div>
+    <div class="header-main">
+      <div class="logo-circle">
+        <div class="logo-inner"><div class="logo-leaf"></div></div>
+      </div>
+      <div class="school-name">
+        <h1>Seedling Public School</h1>
+        <p>Sector-4, Jawahar Nagar, Jaipur — Affiliated to CBSE</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge">CBSE Compliance</div>
+    <h2>Mandatory Public Disclosure</h2>
+    <p>As per CBSE Affiliation Bye-Laws, the following information is disclosed for Seedling Public School (SPS), Jaipur</p>
+  </div>
+
+  <div class="content">
+
+    <!-- School Info -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">1</div>
+        <div class="section-title">School Information</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Name &amp; Address</div>
+        <div class="info-value"><strong>Seedling Public School</strong><br>Sector-4, Park Lane, Jawahar Nagar, Jaipur — 302004</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Email</div>
+        <div class="info-value"><a href="mailto:seedlingacademy@hotmail.com">seedlingacademy@hotmail.com</a></div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Phone No.</div>
+        <div class="info-value">0141-7193000</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Fax No.</div>
+        <div class="info-value">0141-2561684</div>
+      </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="section-card">
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-val">1992</div>
+          <div class="stat-lbl">Year Established</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">10441</div>
+          <div class="stat-lbl">School Code</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">3330</div>
+          <div class="stat-lbl">Campus (sq. mtrs.)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Affiliation -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">2</div>
+        <div class="section-title">Affiliation Status</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Status</div>
+        <div class="info-value"><span class="status-badge status-prov">Provisional</span></div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Affiliation Number</div>
+        <div class="info-value">1730084</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Affiliated Since</div>
+        <div class="info-value">1993</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Affiliation Valid Upto</div>
+        <div class="info-value">31 March 2025</div>
+      </div>
+    </div>
+
+    <!-- Trust -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">3</div>
+        <div class="section-title">Trust / Society Details</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Name of Trust / Society</div>
+        <div class="info-value">Mahima Shiksha Samiti</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Registration Valid Upto</div>
+        <div class="info-value">10 May 2024</div>
+      </div>
+    </div>
+
+    <!-- Documents -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">4</div>
+        <div class="section-title">Documents &amp; Certificates</div>
+      </div>
+      <div class="docs-grid">
+        <div class="doc-item">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div style="flex:1"><div class="doc-num">(i)</div><div class="doc-name">Affiliation / Upgradation Letter</div></div>
+          <a href="https://seedlingschools.com/mandatory-discloser/Affiliation-Upgradation-Letter.pdf" class="view-btn" target="_blank">View</a>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div style="flex:1"><div class="doc-num">(ii)</div><div class="doc-name">Trust Registration Certificate</div></div>
+          <a href="https://seedlingschools.com/mandatory-discloser/Trust-Registration-Certificate.pdf" class="view-btn" target="_blank">View</a>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div style="flex:1"><div class="doc-num">(iii)</div><div class="doc-name">No Objection Certificate (State Govt.)</div></div>
+          <a href="https://seedlingschools.com/mandatory-discloser/NOC-By-State-Govt.pdf" class="view-btn" target="_blank">View</a>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div style="flex:1"><div class="doc-num">(iv)</div><div class="doc-name">Recognition Certificate under RTE Act 2009</div></div>
+          <a href="https://seedlingschools.com/mandatory-discloser/RTE.pdf" class="view-btn" target="_blank">View</a>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div style="flex:1"><div class="doc-num">(v)</div><div class="doc-name">Building Safety Certificate</div></div>
+          <a href="https://seedlingschools.com/mandatory-discloser/Building-Safety-Certificate.pdf" class="view-btn" target="_blank">View</a>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div style="flex:1"><div class="doc-num">(vi)</div><div class="doc-name">Fire Safety Certificate</div></div>
+          <a href="https://seedlingschools.com/mandatory-discloser/Fire-Safety.pdf" class="view-btn" target="_blank">View</a>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div style="flex:1"><div class="doc-num">(vii)</div><div class="doc-name">Water, Health &amp; Sanitation Certificate</div></div>
+          <a href="https://seedlingschools.com/mandatory-discloser/Watar-Health.pdf" class="view-btn" target="_blank">View</a>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div style="flex:1"><div class="doc-num">(viii)</div><div class="doc-name">Fee Structure</div></div>
+          <a href="https://seedlingschools.com/mandatory-discloser/Fee%20structure%20PDF.pdf" class="view-btn" target="_blank">View</a>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div style="flex:1"><div class="doc-num">(ix)</div><div class="doc-name">DEO Certificate</div></div>
+          <a href="https://seedlingschools.com/deo-certificate.php" class="view-btn" target="_blank">View</a>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div style="flex:1"><div class="doc-num">(x)</div><div class="doc-name">Annual Academic Calendar</div></div>
+          <a href="https://seedlingschools.com/mandatory-discloser/Year-Planner-2024-25.pdf" class="view-btn" target="_blank">View</a>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div style="flex:1"><div class="doc-num">(xi)</div><div class="doc-name">List of School Management Committee (SMC)</div></div>
+          <a href="https://seedlingschools.com/smc.php" class="view-btn" target="_blank">View</a>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div style="flex:1"><div class="doc-num">(xii)</div><div class="doc-name">List of PTA Members</div></div>
+          <a href="https://seedlingschools.com/pta-members.php" class="view-btn" target="_blank">View</a>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div style="flex:1"><div class="doc-num">(xiii)</div><div class="doc-name">Last 3 Years Board Exam Results</div></div>
+          <a href="https://seedlingschools.com/last-three-year-result.php" class="view-btn" target="_blank">View</a>
+        </div>
+        <div class="doc-item">
+          <div class="doc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div style="flex:1"><div class="doc-num">(xiv)</div><div class="doc-name">Fire Fighting Certificate</div></div>
+          <a href="https://seedlingschools.com/mandatory-discloser/Fire-Fighting-Certificate.pdf" class="view-btn" target="_blank">View</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Infrastructure -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">5</div>
+        <div class="section-title">Infrastructure &amp; Facilities</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Campus Area</div>
+        <div class="info-value">3330.28 sq. mtrs.</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Internet Facility</div>
+        <div class="info-value"><span class="status-badge">✓ Available</span></div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Gymnasium</div>
+        <div class="info-value"><span class="status-badge">✓ Available</span></div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© <span>Seedling Group of Schools</span> | All Rights Reserved | Mandatory Disclosure as per CBSE Affiliation Bye-Laws</p>
+  </footer>
+
+</div>
