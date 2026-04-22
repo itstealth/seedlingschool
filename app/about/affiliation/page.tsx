@@ -63,7 +63,7 @@ export default function AffiliationPage() {
               transition={{ duration: 0.8, delay: i * 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="group relative"
             >
-              <div className="relative h-full bg-neutral-50/50 backdrop-blur-xl rounded-[4rem] p-16 border border-black/5 transition-all duration-500 hover:bg-white hover:shadow-2xl hover:shadow-black/[0.02] hover:-translate-y-2 overflow-hidden flex flex-col group">
+              <div className="relative h-full bg-neutral-50/50 backdrop-blur-xl rounded-[4rem] p-16 border border-black/5 transition-all duration-500 hover:bg-white hover:shadow-2xl hover:shadow-black/2 hover:-translate-y-2 overflow-hidden flex flex-col group">
                 
                 {/* Decorative Icon Background */}
                 <div className={`absolute top-0 right-0 w-40 h-40 bg-linear-to-br ${item.color} opacity-5 blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:opacity-10 transition-opacity`} />
@@ -72,7 +72,7 @@ export default function AffiliationPage() {
                   <div className={`w-24 h-24 rounded-3xl bg-linear-to-br ${item.color} text-white flex items-center justify-center shadow-xl shadow-primary/20 group-hover:scale-110 transition-transform`}>
                     <item.icon className="w-12 h-12" />
                   </div>
-                  <span className="text-5xl font-black text-black/[0.02] tracking-tighter">
+                  <span className="text-5xl font-black text-black/2 tracking-tighter">
                     {item.acronym}
                   </span>
                 </div>

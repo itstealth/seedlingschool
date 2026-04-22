@@ -98,8 +98,8 @@ export default function Navbar() {
           isScrolled ? "py-4" : "py-6"
         }`}
       >
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className={`relative rounded-3xl transition-all duration-500 border border-black/3 shadow-2xl shadow-black/2 overflow-hidden ${
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className={`relative rounded-3xl transition-all duration-500 border border-black/3 shadow-2xl shadow-black/2 ${
             isScrolled ? "bg-white/80 backdrop-blur-xl" : "bg-white/40 backdrop-blur-md"
           }`}>
             <div className="flex items-center justify-between h-16 md:h-20 px-6 md:px-10">
@@ -125,14 +125,14 @@ export default function Navbar() {
                 {navItems.map((item) => (
                   <div key={item.name} className="relative group">
                     {item.subLinks ? (
-                      <button className="flex items-center gap-1.5 px-4 py-2 text-[13px] font-bold text-neutral-700 hover:text-primary transition-all rounded-full hover:bg-neutral-100">
+                      <button className="flex items-center gap-1.5 px-3 py-2 text-[13px] font-bold text-neutral-700 hover:text-primary transition-all rounded-full hover:bg-neutral-100 whitespace-nowrap">
                         {item.name}
                         <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180 opacity-60" />
                       </button>
                     ) : (
                       <Link
                         href={item.href}
-                        className={`px-4 py-2 text-[13px] font-bold transition-all rounded-full hover:bg-neutral-100 ${
+                        className={`px-3 py-2 text-[13px] font-bold transition-all rounded-full hover:bg-neutral-100 whitespace-nowrap ${
                           pathname === item.href
                             ? "text-primary bg-primary/5"
                             : "text-neutral-700 hover:text-primary"
@@ -292,11 +292,11 @@ export default function Navbar() {
                   </div>
                 </div>
                 
-                <div className="p-6 bg-neutral-50 border-t border-black/[0.03] mt-auto">
+                <div className="p-6 bg-neutral-50 border-t border-black/3 mt-auto">
                    <Link
                     href="/admissions"
                     onClick={() => setIsOpen(false)}
-                    className="flex justify-center items-center gap-2 w-full px-6 py-4 bg-linear-to-br from-[var(--color-primary)] to-blue-800 text-white font-bold rounded-2xl shadow-xl shadow-primary/20"
+                    className="flex justify-center items-center gap-2 w-full px-6 py-4 bg-linear-to-br from-primary to-blue-800 text-white font-bold rounded-2xl shadow-xl shadow-primary/20"
                   >
                     Apply for Admission 2026
                   </Link>

@@ -82,7 +82,7 @@ export default function LeadershipPage() {
               className="group relative"
             >
               {/* Main Card */}
-              <div className="relative h-full p-10 rounded-[3rem] bg-neutral-50 border border-black/[0.03] transition-all duration-700 hover:bg-white hover:shadow-2xl hover:shadow-black/[0.02] overflow-hidden flex flex-col">
+              <div className="relative h-full p-10 rounded-[3rem] bg-neutral-50 border border-black/3 transition-all duration-700 hover:bg-white hover:shadow-2xl hover:shadow-black/2 overflow-hidden flex flex-col">
                 
                 {/* Decorative Elements */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />

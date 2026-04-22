@@ -95,7 +95,7 @@ export default function AboutPage() {
       </section>
 
       {/* NEW SECTION: Leadership Messages */}
-      <section className="py-40 bg-[#F9FAFB] border-y border-black/[0.05]">
+      <section className="py-40 bg-[#F9FAFB] border-y border-black/3">
          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-24">
                <span className="text-secondary font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Our Pathfinders</span>
@@ -111,9 +111,11 @@ export default function AboutPage() {
                   <motion.div 
                      key={i}
                      whileHover={{ y: -10 }}
-                     className="bg-white p-12 rounded-[3.5rem] shadow-xl shadow-black/[0.02] border border-black/[0.03] relative overflow-hidden group"
+                     className="relative h-full bg-white rounded-premium p-10 border border-black/3 shadow-2xl shadow-black/2 transition-all duration-500 hover:shadow-premium-hover hover:-translate-y-2 group/card overflow-hidden"
                   >
-                     <div className="absolute top-0 right-0 p-8 text-7xl font-black text-black/[0.02] group-hover:text-primary/[0.05] transition-colors">{i+1}</div>
+                     <span className="absolute -top-12 -right-8 text-[12rem] font-black text-black/2 group-hover/card:text-primary/5 transition-colors duration-700 pointer-events-none">
+                        {i + 1}
+                     </span>
                      <div className="relative z-10">
                         <p className="text-lg font-medium text-neutral-600 mb-10 leading-relaxed italic">&quot;{leader.quote}&quot;</p>
                         <div className="flex flex-col">
@@ -136,7 +138,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="group relative p-16 rounded-[4rem] bg-white border border-black/[0.03] hover:border-primary/20 transition-all duration-500 overflow-hidden shadow-2xl shadow-black/[0.02]"
+            className="relative h-full bg-white rounded-premium p-12 border border-black/3 shadow-2xl shadow-black/2 transition-all duration-500 hover:shadow-premium-hover hover:-translate-y-2 overflow-hidden flex flex-col group"
           >
             <div className="w-20 h-20 rounded-3xl bg-primary text-white flex items-center justify-center mb-10 shadow-xl shadow-primary/20 group-hover:scale-110 transition-transform">
               <Target className="w-10 h-10" />
@@ -153,7 +155,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="group relative p-16 rounded-[4rem] bg-white border border-black/[0.03] hover:border-secondary/20 transition-all duration-500 overflow-hidden shadow-2xl shadow-black/[0.02]"
+            className="relative h-full bg-white rounded-premium p-12 border border-black/3 shadow-2xl shadow-black/2 transition-all duration-500 hover:shadow-premium-hover hover:-translate-y-2 overflow-hidden flex flex-col group"
           >
             <div className="w-20 h-20 rounded-3xl bg-secondary text-white flex items-center justify-center mb-10 shadow-xl shadow-secondary/20 group-hover:scale-110 transition-transform">
               <Lightbulb className="w-10 h-10" />
@@ -166,8 +168,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* NEW SECTION: Core Values - 5 Pillars */}
-      <section className="py-40 bg-neutral-950 relative overflow-hidden rounded-[4rem] mx-4 md:mx-8">
+      <section className="py-40 bg-neutral-950 relative overflow-hidden rounded-premium mx-4 md:mx-8">
          <div className="absolute inset-0 noise-bg opacity-10" />
          <div className="relative z-10 max-w-[1400px] mx-auto px-6">
             <div className="text-center mb-24">

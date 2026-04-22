@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, GraduationCap, Users, Globe2, BookOpen, Star, Play } from "lucide-react";
+import { ArrowRight, ArrowUpRight, GraduationCap, Users, Globe2, BookOpen, Star, Play } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
@@ -91,25 +91,28 @@ export default function HomePage() {
 
       {/* Stats Section - Floating Overlap */}
       <section className="relative z-20 -mt-20 px-4 max-w-[1200px] mx-auto">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-          {stats.map((stat, idx) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="bg-white p-8 rounded-[2.5rem] border border-black/5 shadow-premium text-center group hover:-translate-y-2 transition-all duration-500"
-            >
-              <stat.icon className={`w-8 h-8 mx-auto mb-4 ${stat.color} group-hover:scale-110 transition-transform`} />
-              <div className="text-4xl md:text-5xl font-extrabold text-neutral-950 mb-1 tracking-tighter">
-                {stat.value}
-              </div>
-              <div className="text-[10px] uppercase font-bold tracking-widest text-neutral-500">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 border-x border-black/3 py-20 bg-white">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
+            {[
+              { label: 'Academic Excellence', val: '100%', sub: 'Pass Result' },
+              { label: 'Global Ranking', val: 'Top 10', sub: 'Education World' },
+              { label: 'Expert Faculty', val: '250+', sub: 'Mentors' },
+              { label: 'Alumni Network', val: '25k+', sub: 'Global Leaders' }
+            ].map((stat, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="text-center group"
+              >
+                <div className="text-4xl md:text-5xl font-black text-neutral-950 mb-2 tracking-tighter group-hover:text-primary transition-colors">{stat.val}</div>
+                <div className="text-[10px] uppercase tracking-widest text-secondary font-black mb-1">{stat.label}</div>
+                <div className="text-xs text-neutral-400 font-medium">{stat.sub}</div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -130,7 +133,7 @@ export default function HomePage() {
                <motion.div 
                   key={i}
                   whileHover={{ y: -10 }}
-                  className="group relative bg-[#F4F4F5] p-10 rounded-[3rem] overflow-hidden transition-all duration-500"
+                  className="group relative bg-[#F4F4F5] p-10 rounded-3xl overflow-hidden transition-all duration-500"
                >
                   <div className="absolute top-0 right-0 p-8 text-6xl font-black text-black/5 group-hover:text-primary/10 transition-colors">
                      {school.icon}
@@ -152,58 +155,51 @@ export default function HomePage() {
 
       {/* The Seedling World - Infrastructure Grid */}
       <section className="py-40 px-4 sm:px-6 lg:px-8 max-w-[1400px] mx-auto">
-        <div className="flex flex-col lg:flex-row justify-between items-end gap-8 mb-20">
-          <div className="max-w-2xl">
-            <span className="text-primary font-bold uppercase tracking-[0.3em] text-xs mb-4 block">The Seedling World</span>
-            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-tight">
-              A Microcosm of <br /> Global Excellence.
-            </h2>
-          </div>
-          <Link href="/campus-highlights" className="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest">
-            View All Facilities
-            <div className="w-12 h-12 rounded-full border border-black/10 dark:border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
-              <ArrowRight className="w-5 h-5" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-black/3 rounded-3xl overflow-hidden">
+          <div className="p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-black/3">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
+                <Star className="w-6 h-6" />
+              </div>
+              <span className="text-xs font-black uppercase tracking-widest text-primary">Microcosm of Global Excellence</span>
             </div>
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Card 1 */}
-          <motion.div 
-            whileHover={{ y: -10 }}
-            className="md:col-span-2 group relative h-[500px] rounded-[3rem] overflow-hidden border border-black/[0.03] shadow-2xl"
-          >
-             <Image src="/home/danish/.gemini/antigravity/brain/88d0f26c-c4e1-47fe-80fd-53d2a15a8882/about_hero_educational_abstract_1776852400303.png" alt="Infrastructure" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-             <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
-             <div className="absolute bottom-0 left-0 p-12 w-full">
-                <span className="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-[10px] font-bold text-white uppercase tracking-widest mb-4 inline-block">Campus Highlights</span>
-                <h3 className="text-4xl font-bold text-white mb-4">World-Class <br /> Architecture</h3>
-                <p className="text-white/80 max-w-md font-medium leading-relaxed">
-                  Designated interactive spaces that encourage collaborative learning and creative exploration.
-                </p>
-             </div>
-          </motion.div>
-
-          {/* Card 2 */}
-          <motion.div 
-             whileHover={{ y: -10 }}
-             className="group relative h-[500px] rounded-[3rem] overflow-hidden border border-black/[0.03] shadow-2xl"
-          >
-             <div className="absolute inset-0 bg-linear-to-br from-primary to-blue-800" />
-             <div className="absolute inset-0 noise-bg opacity-10" />
-             <div className="absolute inset-0 p-12 flex flex-col justify-end">
-                <BookOpen className="w-12 h-12 text-white/20 mb-6 group-hover:scale-110 transition-transform" />
-                <h3 className="text-4xl font-bold text-white mb-4">Global <br /> Curricula</h3>
-                <p className="text-white/80 font-medium leading-relaxed">
-                  Affiliated with CBSE & Cambridge CAIE, preparing students for international success.
-                </p>
-             </div>
-          </motion.div>
+            <h2 className="text-5xl md:text-7xl font-black text-neutral-950 tracking-tighter leading-[0.9] mb-8">
+              Seedling <br />
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-primary/80 to-secondary italic font-serif leading-normal">World.</span>
+            </h2>
+            <p className="text-xl text-neutral-600 font-medium leading-relaxed mb-12 max-w-xl">
+              Step into a campus designed for the 21st century. From high-tech labs to world-class sporting arenas, we provide the ultimate environment for growth.
+            </p>
+            <button className="group flex items-center gap-4 text-neutral-950 font-black tracking-tight text-lg hover:text-primary transition-colors">
+              <span>Explore Facilities</span>
+              <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all">
+                <ArrowUpRight className="w-6 h-6" />
+              </div>
+            </button>
+          </div>
+          <div className="grid grid-cols-2 border-b border-black/3">
+            <div className="p-8 border-r border-black/3">
+              <div className="text-4xl font-black text-neutral-950 mb-2">50+</div>
+              <div className="text-xs font-bold uppercase tracking-widest text-neutral-400">Nations</div>
+            </div>
+            <div className="p-8">
+              <div className="text-4xl font-black text-neutral-950 mb-2">200+</div>
+              <div className="text-xs font-bold uppercase tracking-widest text-neutral-400">Mentors</div>
+            </div>
+            <div className="p-8 border-r border-t border-black/3">
+              <div className="text-4xl font-black text-neutral-950 mb-2">100%</div>
+              <div className="text-xs font-bold uppercase tracking-widest text-neutral-400">Safety</div>
+            </div>
+            <div className="p-8 border-t border-black/3">
+              <div className="text-4xl font-black text-neutral-950 mb-2">24/7</div>
+              <div className="text-xs font-bold uppercase tracking-widest text-neutral-400">Support</div>
+            </div>
+          </div>
         </div>
 
         {/* NEW: Holistic Foundations - 8 Pillars */}
         <div className="mt-32">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border-t border-l border-black/3">
                {[
                   { title: "Academic Rigor", desc: "Scientific methods of learning." },
                   { title: "Physical Growth", desc: "Olympic standard sports infra." },
@@ -214,7 +210,7 @@ export default function HomePage() {
                   { title: "Ethical Values", desc: "Character building foundations." },
                   { title: "Social Impact", desc: "Community outreach initiatives." }
                ].map((pillar, i) => (
-                  <div key={i} className="p-8 border border-black/[0.03] rounded-3xl hover:border-primary/20 transition-colors">
+                  <div key={i} className="p-8 md:p-12 border-r border-b border-black/3 hover:bg-neutral-50 transition-colors">
                      <h4 className="text-lg font-bold text-neutral-950 mb-2">{pillar.title}</h4>
                      <p className="text-xs text-neutral-500 leading-relaxed font-bold uppercase tracking-wider">{pillar.desc}</p>
                   </div>
@@ -224,7 +220,7 @@ export default function HomePage() {
       </section>
 
       {/* Philosophy Section - Pure Light Style */}
-      <section className="py-40 bg-neutral-50 relative overflow-hidden rounded-[2.5rem] mx-4 md:mx-8 border border-black/[0.03]">
+      <section className="py-40 bg-neutral-50 relative overflow-hidden rounded-3xl mx-4 md:mx-8 border border-black/3">
         <div className="absolute inset-0 noise-bg opacity-[0.03]" />
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 text-center">
             <motion.div
@@ -266,7 +262,7 @@ export default function HomePage() {
                      { name: "Mrs. Meeta Sharma", role: "Parent", quote: "The holistic approach at Seedling has transformed my child into a confident and curious learner. The facilities are unmatched in Jaipur." },
                      { name: "Mr. Rajat Verma", role: "Parent", quote: "SIA's international curriculum gave my daughter the edge she needed to excel in her global university applications." }
                   ].map((test, i) => (
-                     <div key={i} className="p-10 bg-white border border-black/[0.03] rounded-3xl shadow-lg shadow-black/[0.01]">
+                     <div key={i} className="p-10 bg-white border border-black/3 rounded-3xl shadow-lg shadow-black/1">
                         <p className="text-neutral-600 font-medium italic mb-6 leading-relaxed">&quot;{test.quote}&quot;</p>
                         <div className="flex items-center gap-3">
                            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary">S</div>
@@ -279,7 +275,7 @@ export default function HomePage() {
                   ))}
                </div>
             </div>
-            <div className="relative aspect-square bg-[#F4F4F5] rounded-[4rem] overflow-hidden group border border-black/[0.03]">
+            <div className="relative aspect-square bg-[#F4F4F5] rounded-3xl overflow-hidden group border border-black/3">
                <Image src="/home/danish/.gemini/antigravity/brain/88d0f26c-c4e1-47fe-80fd-53d2a15a8882/about_hero_educational_abstract_1776852400303.png" alt="Students Speaking" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity" />
                <button className="absolute inset-0 flex items-center justify-center">
@@ -296,7 +292,7 @@ export default function HomePage() {
 
       {/* Final CTA Section - With Inquiry Teaser */}
       <section className="py-40 px-4 bg-[#F9FAFB]">
-         <div className="max-w-[1000px] mx-auto text-center">
+         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center border-x border-black/3 bg-white">
             <h2 className="text-5xl md:text-8xl font-black tracking-tighter text-neutral-950 mb-12">
                Future Leaders <br /> <span className="text-primary italic font-serif">Start Here.</span>
             </h2>

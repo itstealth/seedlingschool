@@ -117,7 +117,7 @@ function TimelineItem({ item, index }: { item: any, index: number }) {
     >
       <div className={`${item.align === 'right' ? 'md:order-1 md:text-right md:pr-20' : 'md:order-2 md:text-left md:pl-20'}`}>
          <div className="flex flex-col">
-            <span className="text-8xl font-black text-black/[0.03] -mb-8 leading-none select-none tracking-tighter transition-all group-hover:text-primary/10">
+            <span className="text-8xl font-black text-black/3 -mb-8 leading-none select-none tracking-tighter transition-all group-hover:text-primary/10">
               {item.year}
             </span>
             <span className="text-secondary font-bold tracking-[0.2em] text-sm uppercase mb-4 pl-1">
@@ -134,14 +134,14 @@ function TimelineItem({ item, index }: { item: any, index: number }) {
       
       {/* Decorative Connector Dot for Mobile/Desktop */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex items-center justify-center">
-         <div className="w-12 h-12 rounded-full bg-white border-2 border-black/[0.03] flex items-center justify-center">
+         <div className="w-12 h-12 rounded-full bg-white border-2 border-black/3 flex items-center justify-center">
             <div className="w-4 h-4 rounded-full bg-secondary shadow-[0_0_15px_rgba(164,21,70,0.2)]" />
          </div>
       </div>
 
       <div className={`${item.align === 'right' ? 'md:order-2' : 'md:order-1'}`}>
          {/* Abstract Decorative Element or Placeholder for milestone image */}
-         <div className="aspect-video md:aspect-square bg-neutral-50 rounded-premium relative overflow-hidden border border-black/[0.03] group shadow-2xl shadow-black/[0.02]">
+         <div className="aspect-video md:aspect-square bg-neutral-50 rounded-premium relative overflow-hidden border border-black/3 group shadow-2xl shadow-black/2">
             <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             <div className="absolute inset-0 flex items-center justify-center">
                <span className="text-primary/10 font-bold text-9xl">{item.year[2]}{item.year[3]}</span>
