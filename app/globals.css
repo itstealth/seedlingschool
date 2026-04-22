@@ -1,15 +1,61 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-primary: #175190;
+  --color-secondary: #A41546;
+  --color-accent: #896B85;
+  --color-neutral-bg: #F5F3F2;
+  --color-surface: rgba(255, 255, 255, 0.8);
+  --color-surface-dark: rgba(10, 10, 10, 0.8);
+  
+  --font-outfit: var(--font-outfit);
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+
+  /* Premium Elevation System */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.12);
+  --shadow-premium: 0 20px 50px rgba(0, 0, 0, 0.05), 0 5px 15px rgba(0, 0, 0, 0.02);
+  --shadow-premium-hover: 0 20px 60px rgba(23, 81, 144, 0.12);
+  
+  --radius-premium: 2.5rem;
+  --radius-button: 1rem;
+  --radius-card: 2rem;
+
+  /* Animation Tokens */
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@layer base {
+  body {
+    @apply bg-[#F9FAFB] text-neutral-900 transition-colors duration-500;
+  }
+}
+
+@utility glass {
+  @apply backdrop-blur-xl bg-white/70 border border-white/20 shadow-xl;
+}
+
+@utility glass-dark {
+  @apply backdrop-blur-xl bg-black/80 border border-white/10 shadow-2xl;
+}
+
+@utility noise-bg {
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  filter: contrast(150%) brightness(100%);
+}
+
+@utility shadow-premium {
+  box-shadow: var(--shadow-premium);
+}
+
+@utility rounded-premium {
+  border-radius: var(--radius-premium);
+}
+
+:root {
+  --background: var(--color-neutral-bg);
+  --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +68,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }
