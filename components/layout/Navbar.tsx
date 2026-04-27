@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X, ArrowUpRight, ArrowRight } from "lucide-react";
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 
 const navItems = [
@@ -87,33 +87,32 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-primary to-secondary origin-left z-[60]"
+        className="fixed top-0 left-0 right-0 h-[3px] bg-linear-to-r from-primary via-secondary to-primary origin-left z-[60]"
         style={{ scaleX }}
       />
 
       <header 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled ? "py-4" : "py-6"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+          isScrolled ? "py-4" : "py-8"
         }`}
       >
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className={`relative rounded-3xl transition-all duration-500 border border-black/3 shadow-2xl shadow-black/2 ${
-            isScrolled ? "bg-white/80 backdrop-blur-xl" : "bg-white/40 backdrop-blur-md"
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+          <nav className={`relative rounded-full transition-all duration-700 border border-white/40 shadow-editorial ${
+            isScrolled ? "glass-white py-3 px-8" : "bg-transparent py-4 px-10 border-transparent shadow-none"
           }`}>
-            <div className="flex items-center justify-between h-16 md:h-20 px-6 md:px-10">
+            <div className="flex items-center justify-between h-14 md:h-16">
               {/* Logo */}
               <div className="flex-shrink-0">
-                <Link href="/" className="flex items-center gap-3 group">
-                  <div className="w-11 h-11 rounded-xl bg-linear-to-br from-primary to-blue-800 text-white flex items-center justify-center font-bold text-2xl tracking-tighter shadow-lg group-hover:scale-105 transition-transform duration-300">
+                <Link href="/" className="flex items-center gap-4 group">
+                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black text-2xl tracking-tighter shadow-lg transition-all duration-500 ${isScrolled ? "bg-primary text-white scale-90" : "bg-white text-primary"}`}>
                     S
                   </div>
                   <div className="flex flex-col">
-                    <span className="font-bold text-xl leading-tight text-neutral-950 tracking-tight">
+                    <span className={`font-black text-xl leading-none tracking-tight transition-colors ${isScrolled ? "text-neutral-950" : "text-white"}`}>
                       Seedling
                     </span>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-secondary font-bold">
+                    <span className={`text-[10px] uppercase tracking-[0.3em] font-black transition-colors ${isScrolled ? "text-secondary" : "text-white/60"}`}>
                       Group of Schools
                     </span>
                   </div>
@@ -121,22 +120,18 @@ export default function Navbar() {
               </div>
 
               {/* Desktop Navigation */}
-              <nav className="hidden xl:flex items-center gap-1">
+              <nav className="hidden xl:flex items-center gap-2">
                 {navItems.map((item) => (
                   <div key={item.name} className="relative group">
                     {item.subLinks ? (
-                      <button className="flex items-center gap-1.5 px-3 py-2 text-[13px] font-bold text-neutral-700 hover:text-primary transition-all rounded-full hover:bg-neutral-100 whitespace-nowrap">
+                      <button className={`flex items-center gap-1.5 px-4 py-2.5 text-[13px] font-black tracking-tight transition-all rounded-full hover:bg-neutral-50 hover:text-primary whitespace-nowrap ${isScrolled ? "text-neutral-600" : "text-white"}`}>
                         {item.name}
-                        <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180 opacity-60" />
+                        <ChevronDown className={`w-3.5 h-3.5 transition-transform group-hover:rotate-180 opacity-60`} />
                       </button>
                     ) : (
                       <Link
                         href={item.href}
-                        className={`px-3 py-2 text-[13px] font-bold transition-all rounded-full hover:bg-neutral-100 whitespace-nowrap ${
-                          pathname === item.href
-                            ? "text-primary bg-primary/5"
-                            : "text-neutral-700 hover:text-primary"
-                        }`}
+                        className={`px-4 py-2.5 text-[13px] font-black tracking-tight transition-all rounded-full whitespace-nowrap ${isScrolled ? (pathname === item.href ? "text-primary bg-primary/5" : "text-neutral-600 hover:bg-neutral-50 hover:text-primary") : (pathname === item.href ? "bg-white/10 text-white" : "text-white hover:bg-white/10")}`}
                       >
                         {item.name}
                       </Link>
@@ -144,23 +139,21 @@ export default function Navbar() {
 
                     {/* Dropdown Menu */}
                     {item.subLinks && (
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 w-[240px]">
-                        <div className="relative bg-white shadow-2xl rounded-[1.5rem] overflow-hidden border border-black/5 p-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                          <div className="absolute inset-0 noise-bg pointer-events-none opacity-[0.03]" />
-                          
-                          <div className="relative z-10 flex flex-col">
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 w-[280px]">
+                        <div className="relative glass-white overflow-hidden p-3 rounded-[2.5rem] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                          <div className="flex flex-col gap-1">
                             {item.subLinks.map((subLink) => (
                               <Link
                                 key={subLink.name}
                                 href={subLink.href}
-                                className={`flex items-center px-4 py-3 leading-none text-[13px] rounded-xl transition-all ${
+                                className={`flex items-center justify-between px-6 py-4 text-[14px] font-black rounded-2xl transition-all ${
                                   pathname === subLink.href
-                                    ? "bg-primary/5 text-primary font-bold"
+                                    ? "bg-primary text-white shadow-lg"
                                     : "text-neutral-600 hover:bg-neutral-50 hover:text-neutral-950"
                                 }`}
                               >
-                                <div className={`w-1 h-1 rounded-full bg-primary mr-3 transition-all ${pathname === subLink.href ? "opacity-100 scale-100" : "opacity-0 scale-0"}`} />
                                 {subLink.name}
+                                <ArrowUpRight className={`w-4 h-4 transition-all ${pathname === subLink.href ? "opacity-100" : "opacity-0 group-hover/sub:opacity-100"}`} />
                               </Link>
                             ))}
                           </div>
@@ -175,9 +168,9 @@ export default function Navbar() {
               <div className="hidden xl:flex items-center gap-4">
                 <Link
                   href="/admissions"
-                  className="px-6 py-2.5 bg-linear-to-br from-primary to-blue-800 text-white text-sm font-bold rounded-full shadow-lg shadow-primary/20 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 active:scale-95"
+                  className={`px-8 py-3.5 font-black text-sm rounded-full transition-all duration-500 shadow-editorial hover:scale-[1.05] active:scale-95 ${isScrolled ? "bg-neutral-950 text-white hover:bg-primary" : "bg-white text-neutral-950 hover:bg-primary hover:text-white"}`}
                 >
-                  Apply Now
+                  Apply Now &apos;26
                 </Link>
               </div>
 
@@ -185,7 +178,7 @@ export default function Navbar() {
               <div className="xl:hidden flex items-center">
                 <button
                   onClick={() => setIsOpen(true)}
-                  className="p-2.5 bg-neutral-100 rounded-xl text-neutral-700 hover:text-neutral-950 transition-colors"
+                  className={`p-3 rounded-2xl ${isScrolled ? "bg-neutral-100 text-neutral-950" : "bg-white/10 text-white"} transition-colors`}
                   aria-label="Open menu"
                 >
                   <Menu className="w-6 h-6" />
@@ -204,54 +197,47 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 bg-neutral-950/20 backdrop-blur-sm xl:hidden"
+              className="fixed inset-0 z-50 bg-neutral-950/40 backdrop-blur-md xl:hidden"
               onClick={() => setIsOpen(false)}
             />
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", bounce: 0, duration: 0.4 }}
-              className="fixed inset-y-0 right-0 z-50 w-full max-w-[360px] bg-white shadow-2xl xl:hidden overflow-hidden flex flex-col"
+              transition={{ type: "spring", bounce: 0, duration: 0.6 }}
+              className="fixed inset-y-0 right-0 z-50 w-full max-w-[400px] bg-white xl:hidden overflow-hidden flex flex-col rounded-l-[3.5rem] shadow-editorial"
             >
-              <div className="absolute inset-0 noise-bg pointer-events-none opacity-[0.02]" />
+              <div className="absolute inset-0 mesh-gradient opacity-10 pointer-events-none" />
               
               <div className="flex flex-col h-full relative z-10">
-                <div className="flex items-center justify-between p-6 border-b border-black/3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-xl bg-primary text-white flex items-center justify-center font-bold text-lg">
-                      S
-                    </div>
+                <div className="flex items-center justify-between p-8 border-b border-black/5">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-2xl bg-primary text-white flex items-center justify-center font-black text-xl">S</div>
                     <div className="flex flex-col">
-                      <span className="font-bold text-lg leading-tight text-neutral-950">Seedling</span>
-                      <span className="text-[9px] uppercase tracking-wider text-secondary font-bold">Group of Schools</span>
+                      <span className="font-black text-xl leading-tight text-neutral-950 tracking-tight">Seedling</span>
+                      <span className="text-[10px] uppercase tracking-[0.2em] text-secondary font-black">Group of Schools</span>
                     </div>
                   </div>
                   <button
                     onClick={() => setIsOpen(false)}
-                    className="p-2 text-neutral-500 hover:text-neutral-950 transition-colors bg-neutral-100 rounded-full"
-                    aria-label="Close menu"
+                    className="p-3 text-neutral-500 hover:text-neutral-950 transition-colors bg-neutral-100 rounded-full"
                   >
-                    <X className="w-5 h-5" />
+                    <X className="w-6 h-6" />
                   </button>
                 </div>
 
-                <div className="flex-1 overflow-y-auto px-6 py-4">
-                  <div className="flex flex-col gap-1">
+                <div className="flex-1 overflow-y-auto px-8 py-10">
+                  <div className="flex flex-col gap-2">
                     {navItems.map((item) => (
                       <div key={item.name} className="flex flex-col">
                         {item.subLinks ? (
                           <>
                             <button
                               onClick={() => toggleAccordion(item.name)}
-                              className={`flex items-center justify-between py-4 text-[15px] font-bold transition-colors ${activeAccordion === item.name ? "text-primary" : "text-neutral-950"}`}
+                              className={`flex items-center justify-between py-5 text-xl font-black transition-colors ${activeAccordion === item.name ? "text-primary" : "text-neutral-950"}`}
                             >
                               {item.name}
-                              <ChevronDown
-                                className={`w-4 h-4 transition-transform duration-300 ${
-                                  activeAccordion === item.name ? "rotate-180" : "opacity-40"
-                                }`}
-                              />
+                              <ChevronDown className={`w-5 h-5 transition-transform duration-500 ${activeAccordion === item.name ? "rotate-180" : "opacity-30"}`} />
                             </button>
                             <AnimatePresence>
                               {activeAccordion === item.name && (
@@ -261,17 +247,17 @@ export default function Navbar() {
                                   exit={{ height: 0, opacity: 0 }}
                                   className="overflow-hidden"
                                 >
-                                  <div className="flex flex-col gap-2 pb-4 pl-4 border-l-2 border-primary/10 ml-1">
+                                  <div className="flex flex-col gap-2 pb-6 pl-6 border-l-2 border-primary/20 ml-2">
                                     {item.subLinks.map((subLink) => (
-                                      <div key={subLink.name} className="group/item">
-                                        <Link 
-                                          href={subLink.href}
-                                          onClick={() => setIsOpen(false)}
-                                          className="block p-4 rounded-2xl hover:bg-neutral-50 border border-transparent hover:border-black/5 transition-all"
-                                        >
-                                          <span className="block text-sm font-bold text-neutral-900 group-hover/item:text-primary transition-colors">{subLink.name}</span>
-                                        </Link>
-                                      </div>
+                                      <Link 
+                                        key={subLink.name}
+                                        href={subLink.href}
+                                        onClick={() => setIsOpen(false)}
+                                        className={`flex items-center justify-between p-5 rounded-2xl transition-all ${pathname === subLink.href ? "bg-primary/5 text-primary font-black" : "text-neutral-600 hover:bg-neutral-50"}`}
+                                      >
+                                        <span className="text-lg">{subLink.name}</span>
+                                        <ArrowUpRight className="w-5 h-5 opacity-40" />
+                                      </Link>
                                     ))}
                                   </div>
                                 </motion.div>
@@ -282,7 +268,7 @@ export default function Navbar() {
                           <Link
                             href={item.href}
                             onClick={() => setIsOpen(false)}
-                            className="py-4 text-[15px] font-bold text-neutral-950"
+                            className="py-5 text-xl font-black text-neutral-950"
                           >
                             {item.name}
                           </Link>
@@ -292,13 +278,14 @@ export default function Navbar() {
                   </div>
                 </div>
                 
-                <div className="p-6 bg-neutral-50 border-t border-black/3 mt-auto">
+                <div className="p-10 bg-neutral-50 border-t border-black/5 mt-auto">
                    <Link
                     href="/admissions"
                     onClick={() => setIsOpen(false)}
-                    className="flex justify-center items-center gap-2 w-full px-6 py-4 bg-linear-to-br from-primary to-blue-800 text-white font-bold rounded-2xl shadow-xl shadow-primary/20"
+                    className="flex justify-center items-center gap-4 w-full h-20 bg-neutral-950 text-white font-black text-xl rounded-3xl shadow-editorial hover:bg-primary transition-all"
                   >
                     Apply for Admission 2026
+                    <ArrowRight className="w-6 h-6" />
                   </Link>
                 </div>
               </div>

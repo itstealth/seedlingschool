@@ -1,50 +1,56 @@
 import Link from "next/link";
 import { MoveRight, Phone, Mail, MapPin, Globe } from "lucide-react";
+import { Instagram, Facebook, Twitter, Linkedin } from "@/components/icons/BrandIcons";
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-black/5 relative overflow-hidden">
-      {/* Decorative Background */}
-      <div className="absolute bottom-0 right-0 w-[40%] h-[40%] bg-primary/2 rounded-full blur-[100px] pointer-events-none" />
+    <footer className="bg-white border-t border-black/5 relative overflow-hidden rounded-t-[6rem]">
+      {/* Mesh Gradient Decoration */}
+      <div className="absolute top-0 right-0 w-[60%] h-[60%] mesh-gradient opacity-[0.03] pointer-events-none" />
       
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-20">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 pt-32 pb-16 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-24 mb-32">
           
-          {/* Column 1: Brand */}
-          <div className="lg:col-span-2 flex flex-col space-y-8 pr-8">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-linear-to-br from-primary to-blue-800 text-white flex items-center justify-center font-bold text-2xl tracking-tighter shadow-lg shadow-primary/20">
+          {/* Column 1: Brand (Desktop Spans 4) */}
+          <div className="lg:col-span-5 space-y-12">
+            <div className="flex items-center gap-5">
+              <div className="w-16 h-16 rounded-[1.5rem] bg-neutral-950 text-white flex items-center justify-center font-black text-3xl tracking-tighter shadow-editorial">
                 S
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-2xl leading-tight text-neutral-950 tracking-tight">
+                <span className="font-black text-3xl leading-tight text-neutral-950 tracking-tight">
                   Seedling
                 </span>
-                <span className="text-[11px] uppercase tracking-[0.2em] text-secondary font-bold">
+                <span className="text-xs uppercase tracking-[0.4em] text-secondary font-black">
                   Group of Schools
                 </span>
               </div>
             </div>
-            <p className="text-base leading-relaxed text-neutral-600 font-medium">
-              Dedicated to academic excellence and holistic growth. We empower students with the knowledge, values, and skills to thrive in a global society.
+            <p className="text-xl leading-relaxed text-neutral-600 font-medium max-w-lg">
+              Dedicated to academic excellence and holistic growth since 1993. We empower the next generation of global leaders with curiosity, character, and competence.
             </p>
             <div className="flex items-center gap-4">
-              {[1, 2, 3, 4].map((idx) => (
-                <a key={idx} href="#" className="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center text-neutral-500 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300">
-                  <Globe className="w-5 h-5" />
+              {[
+                { icon: Twitter, href: "#" },
+                { icon: Facebook, href: "#" },
+                { icon: Instagram, href: "#" },
+                { icon: Linkedin, href: "#" }
+              ].map((social, idx) => (
+                <a key={idx} href={social.href} className="w-14 h-14 rounded-2xl border border-black/5 flex items-center justify-center text-neutral-400 hover:bg-neutral-950 hover:text-white hover:shadow-editorial transition-all duration-500">
+                  <social.icon className="w-6 h-6" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
-          <div className="flex flex-col space-y-8">
-            <h3 className="text-secondary font-black text-xs tracking-[0.3em] uppercase">Discover</h3>
-            <ul className="space-y-4">
-              {['Our Legacy', 'Leadership', 'Affiliations', 'Admissions', 'Career'].map((item) => (
+          {/* Column 2: Quick Explore (Desktop Spans 2) */}
+          <div className="lg:col-span-2 space-y-10">
+            <h3 className="text-secondary font-black text-xs tracking-[0.3em] uppercase block border-b border-secondary/10 pb-4">Explore</h3>
+            <ul className="space-y-6">
+              {['About Seedling', 'Academic Paths', 'Roll of Honour', 'Global Faculty', 'Career'].map((item) => (
                 <li key={item}>
-                  <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="group flex items-center text-sm font-bold text-neutral-500 hover:text-primary transition-colors">
-                    <MoveRight className="w-4 h-4 mr-2 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                  <Link href={`/${item.toLowerCase().split(' ')[0]}`} className="group flex items-center text-sm font-black text-neutral-500 hover:text-neutral-950 transition-colors">
+                    <MoveRight className="w-5 h-5 mr-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all duration-500 text-primary" />
                     <span>{item}</span>
                   </Link>
                 </li>
@@ -52,52 +58,55 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Schools */}
-          <div className="flex flex-col space-y-8">
-            <h3 className="text-secondary font-black text-xs tracking-[0.3em] uppercase">Our Schools</h3>
-            <ul className="space-y-4">
-              {['Seedling Public School', 'Seedling Modern High School', 'Seedling International Academy', 'The Kiderworld'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="group flex items-center text-sm font-bold text-neutral-500 hover:text-primary transition-colors">
-                    <div className="w-1.5 h-1.5 rounded-full bg-neutral-200 mr-2 group-hover:bg-primary group-hover:scale-125 transition-all" />
-                    <span>{item}</span>
-                  </a>
-                </li>
+          {/* Column 3: Schools (Desktop Spans 3) */}
+          <div className="lg:col-span-3 space-y-10">
+            <h3 className="text-secondary font-black text-xs tracking-[0.3em] uppercase block border-b border-secondary/10 pb-4">Our Institutions</h3>
+            <div className="space-y-6">
+              {[
+                { name: 'Seedling Public School', loc: 'Jawahar Nagar' },
+                { name: 'Seedling International Academy', loc: 'Cambridge Pathway' },
+                { name: 'The Kiderworld', loc: 'Pre-Primary' }
+              ].map((school) => (
+                <div key={school.name} className="group cursor-default">
+                  <span className="block text-sm font-black text-neutral-900 group-hover:text-primary transition-colors">{school.name}</span>
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-neutral-400">{school.loc}</span>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
 
-          {/* Column 4: Contact */}
-          <div className="flex flex-col space-y-8">
-            <h3 className="text-secondary font-black text-xs tracking-[0.3em] uppercase">Contact Us</h3>
-            <div className="space-y-6">
-              <div className="flex gap-3">
-                <MapPin className="w-5 h-5 text-secondary shrink-0" />
-                <p className="text-sm font-bold text-neutral-600 leading-snug">
-                  Sector-4, Jawahar Nagar, <br /> Jaipur, Rajasthan 302004
-                </p>
+          {/* Column 4: Reach Out (Desktop Spans 2) */}
+          <div className="lg:col-span-2 space-y-10">
+            <h3 className="text-secondary font-black text-xs tracking-[0.3em] uppercase block border-b border-secondary/10 pb-4">Contact</h3>
+            <div className="space-y-8">
+              <div className="space-y-1">
+                 <span className="text-[10px] font-black uppercase tracking-widest text-neutral-400 block">General Inquiry</span>
+                 <a href="mailto:info@seedlingschools.com" className="text-sm font-black text-neutral-950 hover:text-primary transition-colors">info@seedling.com</a>
               </div>
-              <div className="flex gap-3 items-center">
-                <Phone className="w-5 h-5 text-secondary shrink-0" />
-                <a href="tel:+911412654395" className="text-sm font-bold text-neutral-600 hover:text-primary transition-colors">+91 141 265 4395</a>
+              <div className="space-y-1">
+                 <span className="text-[10px] font-black uppercase tracking-widest text-neutral-400 block">Admission Helpline</span>
+                 <a href="tel:+911412654395" className="text-sm font-black text-neutral-950">+91 141 265 4395</a>
               </div>
-              <div className="flex gap-3 items-center">
-                <Mail className="w-5 h-5 text-secondary shrink-0" />
-                <a href="mailto:info@seedlingschools.com" className="text-sm font-bold text-neutral-600 hover:text-primary transition-colors">info@seedlingschools.com</a>
+              <div className="space-y-1">
+                 <span className="text-[10px] font-black uppercase tracking-widest text-neutral-400 block">Visit Us</span>
+                 <p className="text-sm font-black text-neutral-950 leading-snug">Jawahar Nagar, Jaipur</p>
               </div>
             </div>
           </div>
 
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-sm font-bold text-neutral-400">
-            &copy; {new Date().getFullYear()} Seedling Group of Schools. All rights reserved.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-            {['Privacy Policy', 'Terms & Conditions', 'Mandatory Disclosure'].map((item) => (
-              <Link key={item} href={`/${item.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`} className="text-sm font-bold text-neutral-400 hover:text-primary transition-colors">
+        {/* Dynamic Bottom Bar */}
+        <div className="pt-16 border-t border-black/5 flex flex-col lg:flex-row justify-between items-center gap-10">
+          <div className="flex items-center gap-6">
+             <div className="w-12 h-12 rounded-xl bg-neutral-50 border border-black/5 flex items-center justify-center font-black text-neutral-300">©</div>
+             <p className="text-sm font-black text-neutral-400">
+               {new Date().getFullYear()} Seedling Group of Schools. <br /> <span className="text-[10px] uppercase tracking-widest">Architected for Future Leaders.</span>
+             </p>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
+            {['Privacy', 'Policies', 'Disclosure'].map((item) => (
+              <Link key={item} href={`/${item.toLowerCase()}`} className="text-xs font-black uppercase tracking-[0.2em] text-neutral-400 hover:text-primary transition-colors">
                 {item}
               </Link>
             ))}
@@ -107,4 +116,3 @@ export default function Footer() {
     </footer>
   );
 }
-

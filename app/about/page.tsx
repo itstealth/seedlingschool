@@ -1,219 +1,259 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Target, Lightbulb, GraduationCap, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { 
+  History, 
+  Target, 
+  Eye, 
+  Award, 
+  Users, 
+  Globe2, 
+  Sparkles,
+  Quote,
+  ChevronRight,
+  ArrowRight
+} from "lucide-react";
 import Image from "next/image";
-import { useRef } from "react";
+import Link from "next/link";
+
+const leaders = [
+  {
+    name: "Late Ms. Mohini Bakshi",
+    role: "Founder",
+    quote: "Education at Seedling is about nurturing the unique spark within every child, preparing them to lead with wisdom and empathy in an ever-evolving world.",
+    image: "/home/danish/.gemini/antigravity/brain/88d0f26c-c4e1-47fe-80fd-53d2a15a8882/leadership_md_portrait_professional_1776862565387.png",
+    initials: "MB"
+  },
+  {
+    name: "Dr. Sandeep Bakshi",
+    role: "Director",
+    quote: "Our mission is to bridge the gap between traditional values and global innovative thinking, creating citizens who are both rooted and world-ready.",
+    image: "/home/danish/.gemini/antigravity/brain/88d0f26c-c4e1-47fe-80fd-53d2a15a8882/leadership_ceo_portrait_professional_1776862587847.png",
+    initials: "SB"
+  },
+  {
+    name: "Dr. Preeti Bakshi",
+    role: "Executive Director",
+    quote: "We believe in providing an environment that facilitates intellectual curiosity, character development, and academic excellence.",
+    image: "/home/danish/.gemini/antigravity/brain/88d0f26c-c4e1-47fe-80fd-53d2a15a8882/leadership_principal_portrait_1776862613820.png",
+    initials: "PB"
+  },
+  {
+    name: "Ms. Akansha Bakshi",
+    role: "Director",
+    quote: "Innovation and creativity are at the heart of our educational approach, ensuring students are prepared for the future.",
+    image: "/home/danish/.gemini/antigravity/brain/88d0f26c-c4e1-47fe-80fd-53d2a15a8882/about_page_hero_1776857790049.png",
+    initials: "AB"
+  },
+  {
+    name: "Ms. Aishwarya Bakshi",
+    role: "Director",
+    quote: "We are committed to nurturing global citizens who are compassionate, resilient, and ready to make a positive impact.",
+    image: "/home/danish/.gemini/antigravity/brain/88d0f26c-c4e1-47fe-80fd-53d2a15a8882/academics_curriculum_hero_1776861119845.png",
+    initials: "AB"
+  }
+];
 
 export default function AboutPage() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-
   return (
-    <div ref={containerRef} className="bg-white min-h-screen relative overflow-hidden">
-      {/* Decorative Background Elements */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[var(--color-primary)]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-[var(--color-secondary)]/3 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3 pointer-events-none" />
+    <div className="bg-neutral-bg min-h-screen pt-32 overflow-x-hidden">
+      
+      {/* Editorial Hero Section */}
+      <section className="py-48 px-4 sm:px-6 lg:px-8 max-w-[1400px] mx-auto">
+        <div className="flex flex-col items-center text-center">
+           <motion.div
+             initial={{ opacity: 0, y: 20 }}
+             animate={{ opacity: 1, y: 0 }}
+             className="mb-12"
+           >
+             <span className="text-label mb-8 block">The Seedling Legacy</span>
+             <h1 className="text-heading text-7xl md:text-[12rem] leading-[0.8] mb-16">
+                Shaping <br /> 
+                <span className="text-primary italic">Generations.</span>
+             </h1>
+             <div className="w-px h-32 bg-linear-to-b from-primary/30 to-transparent mx-auto" />
+           </motion.div>
 
-      {/* Layered Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center pt-20 px-4 sm:px-6 lg:px-8 max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-12 gap-6 w-full items-center">
-          
-          {/* Text Content - Floating Layer */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="col-span-12 lg:col-span-7 z-20 relative"
-          >
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary mb-8">
-              <GraduationCap className="w-4 h-4" />
-              <span className="text-[11px] font-bold uppercase tracking-widest leading-none">Establishing Excellence Since 1992</span>
-            </div>
-            
-            <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-neutral-950 leading-[0.9] mb-8">
-              Empowering <br />
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-primary/80 to-secondary italic font-serif">Tomorrow&apos;s</span> <br />
-              Leaders.
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-neutral-600 max-w-xl font-medium leading-relaxed mb-12">
-              Beyond just classroom learning, Seedling prioritizes student well-being and community interests, preparing curious minds for a world in constant flux.
-            </p>
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center max-w-6xl mx-auto pt-20">
+              <motion.div 
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="text-left"
+              >
+                 <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-neutral-950 mb-8 font-serif italic">The Seedling Story.</h2>
+                 <p className="text-xl text-neutral-600 font-medium leading-relaxed mb-8">
+                   Founded over three decades ago, Seedling Group of Schools began with a vision to revolutionize the educational landscape of Jaipur. 
+                 </p>
+                 <p className="text-lg text-neutral-500 font-medium leading-relaxed">
+                   What started as a single innovative pre-school has evolved into a global powerhouse of learning, housing multiple prestigious schools that cater to CBSE and Cambridge international standards. 
+                 </p>
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="relative aspect-square rounded-[5rem] overflow-hidden shadow-editorial"
+              >
+                 <Image src="/home/danish/.gemini/antigravity/brain/88d0f26c-c4e1-47fe-80fd-53d2a15a8882/about_page_hero_1776857790049.png" alt="Students in Classroom" fill className="object-cover" />
+                 <div className="absolute inset-0 bg-primary/10" />
+              </motion.div>
+           </div>
+        </div>
+      </section>
 
-            <motion.div 
-              style={{ opacity }}
-              className="flex items-center gap-6"
-            >
-              <button className="h-14 px-8 bg-primary text-white rounded-full font-bold flex items-center group transition-all hover:scale-105 active:scale-95 shadow-xl shadow-primary/20">
-                Explore Our Legacy
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </motion.div>
-          </motion.div>
+      {/* Leadership: Portrait Focused Section */}
+      <section className="py-48 bg-white border-y border-black/5">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-32">
+             <span className="text-label mb-8 block uppercase">Directorial Vision</span>
+             <h2 className="text-heading text-6xl md:text-9xl">Our Pathfinders.</h2>
+          </div>
 
-          {/* Image Layer - Offset & Decorative */}
-          <div className="col-span-12 lg:col-span-5 relative mt-12 lg:mt-0">
-             <motion.div
-               style={{ y: y1 }}
-               className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl aspect-[4/5] border-8 border-white"
-             >
-                <Image 
-                  src="/home/danish/.gemini/antigravity/brain/88d0f26c-c4e1-47fe-80fd-53d2a15a8882/about_hero_educational_abstract_1776852400303.png"
-                  alt="Modern Campus Architecture"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-             </motion.div>
-             
-             {/* Decorative Background Plate */}
-             <motion.div
-               style={{ y: y2 }}
-               className="absolute -bottom-10 -right-10 w-full h-full bg-neutral-100 rounded-[3rem] -z-10 border border-black/[0.03] shadow-inner"
-             />
-             
-             {/* Floating Medal/Badge */}
-             <motion.div
-               initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
-               animate={{ opacity: 1, scale: 1, rotate: 0 }}
-               transition={{ delay: 0.5, type: "spring" }}
-               className="absolute -top-12 -left-12 w-32 h-32 bg-white rounded-2xl shadow-premium border border-black/[0.03] flex flex-col items-center justify-center p-4 z-30"
-             >
-                <span className="text-primary font-black text-3xl">30+</span>
-                <span className="text-[10px] uppercase font-bold text-center leading-tight text-neutral-500">Years of <br /> Heritage</span>
-             </motion.div>
+          <div className="space-y-48">
+            {leaders.map((leader, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 100 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                className={`flex flex-col ${i % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-20 group`}
+              >
+                {/* Portrait Container */}
+                <div className="flex-1 w-full max-w-xl aspect-[3/4] relative rounded-[4rem] overflow-hidden shadow-editorial transition-transform duration-1000 group-hover:scale-[1.02]">
+                   <Image src={leader.image} alt={leader.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+                   <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-all duration-700" />
+                </div>
+
+                {/* Content Container */}
+                <div className="flex-1 space-y-10 relative">
+                   <div className="absolute top-0 left-0 p-8 text-[15rem] font-black text-black/[0.03] select-none pointer-events-none italic font-serif -translate-y-1/2 -translate-x-12 group-hover:text-primary/[0.05] transition-colors">
+                      {leader.initials}
+                   </div>
+                   
+                   <div className="relative z-10">
+                      <div className="w-20 h-20 rounded-3xl bg-neutral-950 flex items-center justify-center text-white mb-10 shadow-2xl group-hover:bg-primary transition-colors">
+                         <Quote className="w-10 h-10" />
+                      </div>
+                      <h3 className="text-4xl md:text-6xl font-black text-neutral-950 mb-4 tracking-tighter">{leader.name}</h3>
+                      <span className="text-sm font-black text-primary uppercase tracking-[0.3em] block mb-10">{leader.role}</span>
+                      
+                      <p className="text-2xl md:text-3xl text-neutral-600 font-serif italic leading-snug mb-12">
+                        &quot;{leader.quote}&quot;
+                      </p>
+                      
+                      <div className="flex items-center gap-6 pt-12 border-t border-black/5">
+                         <div className="flex flex-col">
+                            <span className="text-[10px] font-black text-neutral-400 uppercase tracking-widest">Connect Presence</span>
+                            <Link href="#" className="text-sm font-black text-neutral-950 hover:text-primary transition-colors">LinkedIn Profile</Link>
+                         </div>
+                         <ArrowRight className="w-5 h-5 text-neutral-300" />
+                      </div>
+                   </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* NEW SECTION: Leadership Messages */}
-      <section className="py-40 bg-[#F9FAFB] border-y border-black/3">
-         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-24">
-               <span className="text-secondary font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Our Pathfinders</span>
-               <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-neutral-950">Messages from Leadership</h2>
-            </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-               {[
-                  { name: "Mr. Bakshi", role: "Chairperson", quote: "Education is not the learning of facts, but the training of the mind to think." },
-                  { name: "Mr. Hardeep Bakshi", role: "CEO", quote: "Our goal is to create an ecosystem where innovation and tradition coexist harmoniously." },
-                  { name: "Mr. Sandeep Bakshi", role: "COO", quote: "We don't just build students, we build leaders prepared for the complexities of the 21st century." }
-               ].map((leader, i) => (
-                  <motion.div 
-                     key={i}
-                     whileHover={{ y: -10 }}
-                     className="relative h-full bg-white rounded-premium p-10 border border-black/3 shadow-2xl shadow-black/2 transition-all duration-500 hover:shadow-premium-hover hover:-translate-y-2 group/card overflow-hidden"
-                  >
-                     <span className="absolute -top-12 -right-8 text-[12rem] font-black text-black/2 group-hover/card:text-primary/5 transition-colors duration-700 pointer-events-none">
-                        {i + 1}
-                     </span>
-                     <div className="relative z-10">
-                        <p className="text-lg font-medium text-neutral-600 mb-10 leading-relaxed italic">&quot;{leader.quote}&quot;</p>
-                        <div className="flex flex-col">
-                           <span className="text-xl font-bold text-neutral-950 leading-tight">{leader.name}</span>
-                           <span className="text-xs font-bold text-secondary uppercase tracking-[0.2em] mt-2">{leader.role}</span>
-                        </div>
-                     </div>
-                  </motion.div>
-               ))}
-            </div>
-         </div>
-      </section>
-
-      {/* Vision & Mission - Refined Light Cards */}
-      <section className="py-40 relative z-10 px-4 sm:px-6 lg:px-8 max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
+      {/* Mission & Vision: Split-Screen Mastery */}
+      <section className="py-48 px-4 sm:px-6 lg:px-8 max-w-[1400px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           
-          {/* Card 1 */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="relative h-full bg-white rounded-premium p-12 border border-black/3 shadow-2xl shadow-black/2 transition-all duration-500 hover:shadow-premium-hover hover:-translate-y-2 overflow-hidden flex flex-col group"
+          {/* Mission */}
+          <motion.div 
+            whileHover={{ scale: 0.98 }}
+            className="group relative h-[800px] rounded-[5rem] overflow-hidden bg-primary p-20 flex flex-col justify-end transition-all duration-700 shadow-editorial"
           >
-            <div className="w-20 h-20 rounded-3xl bg-primary text-white flex items-center justify-center mb-10 shadow-xl shadow-primary/20 group-hover:scale-110 transition-transform">
-              <Target className="w-10 h-10" />
-            </div>
-            <h2 className="text-4xl font-black text-neutral-950 mb-8 tracking-tighter uppercase italic">Our Mission</h2>
-            <p className="text-xl text-neutral-600 leading-relaxed font-medium">
-              To provide a joyful learning environment that empowers students to reach their educational and personal potential while nurturing self-confidence.
-            </p>
+             <div className="absolute inset-0 mesh-gradient opacity-20" />
+             <div className="absolute top-20 right-20 w-32 h-32 rounded-full glass flex items-center justify-center border-white/20 bg-white/10 group-hover:scale-110 transition-transform">
+                <Target className="w-16 h-16 text-white" />
+             </div>
+             
+             <div className="relative z-10">
+                <span className="text-white/60 font-black uppercase tracking-[0.4em] text-xs mb-8 block">Projecting Future</span>
+                <h2 className="text-white text-6xl md:text-8xl font-black tracking-tighter mb-10 italic font-serif">The Mission.</h2>
+                <p className="text-xl text-white/80 font-medium leading-relaxed max-w-md">
+                   To provide an environment that facilitates intellectual curiosity, character development, and academic excellence, empowering students to lead with purpose.
+                </p>
+             </div>
           </motion.div>
 
-          {/* Card 2 */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="relative h-full bg-white rounded-premium p-12 border border-black/3 shadow-2xl shadow-black/2 transition-all duration-500 hover:shadow-premium-hover hover:-translate-y-2 overflow-hidden flex flex-col group"
+          {/* Vision */}
+          <motion.div 
+            whileHover={{ scale: 0.98 }}
+            className="group relative h-[800px] rounded-[5rem] overflow-hidden bg-white border border-black/3 p-20 flex flex-col justify-end transition-all duration-700 shadow-editorial"
           >
-            <div className="w-20 h-20 rounded-3xl bg-secondary text-white flex items-center justify-center mb-10 shadow-xl shadow-secondary/20 group-hover:scale-110 transition-transform">
-              <Lightbulb className="w-10 h-10" />
-            </div>
-            <h2 className="text-4xl font-black text-neutral-950 mb-8 tracking-tighter uppercase italic">Our Vision</h2>
-            <p className="text-xl text-neutral-600 leading-relaxed font-medium">
-              To inspire students to become confident, compassionate global citizens, carrying forward the rich legacy of Seedling with integrity and excellence.
-            </p>
+             <div className="absolute top-20 right-20 w-32 h-32 rounded-full bg-neutral-50 flex items-center justify-center border border-black/5 group-hover:scale-110 transition-transform shadow-inner">
+                <Eye className="w-16 h-16 text-primary" />
+             </div>
+             
+             <div className="relative z-10">
+                <span className="text-label mb-8 block">Global Perspective</span>
+                <h2 className="text-heading text-6xl md:text-8xl mb-10">The Vision.</h2>
+                <p className="text-xl text-neutral-600 font-medium leading-relaxed max-w-md">
+                   To be a global benchmark in education, creating enlightened citizens who are equipped with the skills and ethics to shape a better world.
+                </p>
+             </div>
           </motion.div>
+
         </div>
       </section>
 
-      <section className="py-40 bg-neutral-950 relative overflow-hidden rounded-premium mx-4 md:mx-8">
-         <div className="absolute inset-0 noise-bg opacity-10" />
-         <div className="relative z-10 max-w-[1400px] mx-auto px-6">
-            <div className="text-center mb-24">
-               <span className="text-secondary font-bold uppercase tracking-[0.3em] text-xs mb-4 block">The Seedling Way</span>
-               <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-white">Our Core Values</h2>
-            </div>
-            <div className="grid grid-cols-2 lg:grid-cols-5 gap-8">
-               {[
-                  { title: "Honesty", desc: "Upholding truth in all endeavors." },
-                  { title: "Integrity", desc: "Unity of thought, word, and deed." },
-                  { title: "Compassion", desc: "Empathy for every living soul." },
-                  { title: "Resilience", desc: "Strength to overcome adversity." },
-                  { title: "Excellence", desc: "Continuous pursuit of greatness." }
-               ].map((value, i) => (
-                  <div key={i} className="text-center group">
-                     <div className="w-20 h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-8 group-hover:bg-primary group-hover:border-primary transition-all duration-500 shadow-2xl">
-                        <span className="text-2xl font-black text-white">{i+1}</span>
-                     </div>
-                     <h4 className="text-lg font-bold text-white mb-2">{value.title}</h4>
-                     <p className="text-xs text-neutral-500 font-bold uppercase tracking-wider leading-relaxed">{value.desc}</p>
-                  </div>
-               ))}
-            </div>
+      {/* Core Values: Large-Format Cards */}
+      <section className="py-48 bg-neutral-950 relative overflow-hidden rounded-t-[6rem]">
+        <div className="absolute inset-0 mesh-gradient opacity-10" />
+        <div className="relative z-10 max-w-[1400px] mx-auto px-10">
+           <div className="text-center mb-32">
+              <span className="text-label text-secondary mb-8 block uppercase tracking-[0.5em]">Defining excellence</span>
+              <h2 className="text-heading text-white text-7xl md:text-9xl">Our Core Ideals.</h2>
+           </div>
+
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              {[
+                { title: "Empowerment", desc: "Instilling the confidence to lead and innovate.", icon: Sparkles },
+                { title: "Authenticity", desc: "Honoring traditional values in a modern context.", icon: History },
+                { title: "Globalism", desc: "Connecting local talent with world-wide horizons.", icon: Globe2 }
+              ].map((value, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="bg-white/5 backdrop-blur-2xl p-16 rounded-[4rem] border border-white/5 group hover:bg-primary transition-all duration-700"
+                >
+                   <div className="w-20 h-20 rounded-3xl bg-secondary flex items-center justify-center text-white mb-12 shadow-2xl group-hover:scale-110 transition-transform">
+                      <value.icon className="w-10 h-10" />
+                   </div>
+                   <h3 className="text-3xl font-black text-white mb-6 tracking-tighter">{value.title}</h3>
+                   <p className="text-lg text-white/50 leading-relaxed font-medium group-hover:text-white/90 transition-colors">
+                      {value.desc}
+                   </p>
+                </motion.div>
+              ))}
+           </div>
+        </div>
+      </section>
+
+      {/* Call to Journey */}
+      <section className="py-64 bg-white text-center">
+         <div className="max-w-4xl mx-auto px-6">
+            <span className="text-label mb-10 block">Ready to explore?</span>
+            <h2 className="text-heading text-6xl md:text-[8rem] mb-16">
+               Experience <br /> <span className="text-primary tracking-tighter">Growth.</span>
+            </h2>
+            <Link 
+               href="/academics" 
+               className="inline-flex h-24 px-16 bg-neutral-950 text-white rounded-full items-center justify-center font-black text-2xl shadow-editorial hover:bg-primary transition-all group"
+            >
+               Browse Academics
+               <ArrowRight className="ml-6 w-8 h-8 group-hover:translate-x-2 transition-transform" />
+            </Link>
          </div>
       </section>
 
-      {/* Ancient Philosophy Quote - Refined Light Style */}
-      <section className="py-60 relative overflow-hidden text-center bg-white">
-        <div className="relative z-10 max-w-[1000px] mx-auto px-6">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="space-y-12"
-            >
-              <h3 className="text-4xl md:text-7xl font-serif italic text-neutral-900 leading-tight">
-                &quot;haye nayatu na brahmgynam&quot;
-              </h3>
-              <div className="flex flex-col items-center">
-                <div className="w-16 h-1 bg-secondary mb-6" />
-                <span className="text-primary uppercase tracking-[0.4em] font-black text-sm">We aim at wisdom and comprehension</span>
-              </div>
-            </motion.div>
-        </div>
-      </section>
     </div>
   );
 }

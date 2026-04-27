@@ -1,0 +1,166 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { 
+  Award, 
+  Star, 
+  Trophy, 
+  Sparkles, 
+  Users, 
+  Globe, 
+  PartyPopper,
+  Medal,
+  ChevronRight,
+  ArrowRight
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+
+const achievements = [
+  { 
+    title: "100% Board Success", 
+    desc: "A consistent track record of perfect results in CBSE & Cambridge examinations.",
+    icon: Trophy,
+    stat: "100%",
+    color: "secondary"
+  },
+  { 
+    title: "Regional Distinction", 
+    desc: "Recognized as a leading institution in the Education World India School Rankings.",
+    icon: Star,
+    stat: "Top 10",
+    color: "primary"
+  },
+  { 
+    title: "Global Reach", 
+    desc: "Our alumni are pursuing excellence in top-tier universities across 50+ nations.",
+    icon: Globe,
+    stat: "5,000+",
+    color: "accent"
+  }
+];
+
+export default function RollOfHonourPage() {
+  return (
+    <div className="bg-neutral-bg min-h-screen pt-32 overflow-x-hidden">
+      
+      {/* Prestigious Hero Section */}
+      <section className="py-48 px-4 sm:px-6 lg:px-8 max-w-[1400px] mx-auto text-center relative">
+        <div className="absolute inset-0 mesh-gradient opacity-10 pointer-events-none" />
+        <motion.div
+           initial={{ opacity: 0, y: 20 }}
+           animate={{ opacity: 1, y: 0 }}
+           className="relative z-10"
+        >
+          <span className="text-label mb-10 block">Legacy of Achievement</span>
+          <h1 className="text-heading text-6xl md:text-[10rem] mb-20 tracking-tight">
+            Roll of <br /> 
+            <span className="text-secondary italic">Honour.</span>
+          </h1>
+          <div className="relative h-[600px] rounded-[5rem] overflow-hidden shadow-editorial mx-auto max-w-6xl group">
+             <Image 
+               src="/home/danish/.gemini/antigravity/brain/88d0f26c-c4e1-47fe-80fd-53d2a15a8882/roll_of_honour_hero_gold_1776861216355.png"
+               alt="Excellence in Education"
+               fill
+               className="object-cover transition-transform duration-[3000ms] group-hover:scale-110"
+             />
+             <div className="absolute inset-0 bg-secondary/10 group-hover:bg-transparent transition-colors" />
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Excellence Statistics: Glass Gallery */}
+      <section className="py-48 px-4 sm:px-6 lg:px-8 max-w-[1400px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {achievements.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="glass-white p-16 rounded-[4rem] border-white/60 group hover:shadow-premium-hover transition-all duration-700 text-center"
+            >
+               <div className={`w-24 h-24 rounded-3xl bg-${item.color}/5 flex items-center justify-center text-${item.color} mx-auto mb-12 shadow-inner group-hover:scale-110 group-hover:bg-${item.color} group-hover:text-white transition-all duration-700`}>
+                  <item.icon className="w-12 h-12" />
+               </div>
+               <div className="text-6xl font-black text-neutral-950 mb-6 tracking-tighter">{item.stat}</div>
+               <h3 className="text-2xl font-black text-neutral-950 mb-6 tracking-tight">{item.title}</h3>
+               <p className="text-lg text-neutral-500 font-medium leading-relaxed">
+                 {item.desc}
+               </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Hall of Fame: Masonry inspired List */}
+      <section className="py-48 bg-white border-y border-black/5 rounded-[6rem] mx-4 md:mx-8">
+        <div className="max-w-[1200px] mx-auto px-6">
+           <div className="flex flex-col md:flex-row justify-between items-end gap-12 mb-32">
+              <div className="max-w-xl">
+                 <span className="text-label mb-8 block uppercase">Student Success</span>
+                 <h2 className="text-heading text-6xl md:text-9xl tracking-tight">The Board <br /> Hall of Fame.</h2>
+              </div>
+              <p className="text-xl text-neutral-500 max-w-sm font-medium leading-relaxed block border-l-4 border-secondary pl-8 py-4">
+                 Celebrating our students who have consistently pushed the boundaries of academic excellence.
+              </p>
+           </div>
+
+           <div className="space-y-8">
+              {[
+                { name: "Academic Stars", count: "150+ Students", sub: "Scored above 90% in 2024 Boards" },
+                { name: "Subject Toppers", count: "45 Students", sub: "Achieved perfect 100 in various subjects" },
+                { name: "Sports Nationals", count: "30+ Athletes", sub: "Representing Seedling at National level" },
+                { name: "Global Scholars", count: "12 Students", sub: "Acquiring full scholarships in IVY League" }
+              ].map((row, i) => (
+                <motion.div 
+                  key={i}
+                  whileHover={{ x: 20, backgroundColor: 'rgba(23,81,144,0.03)' }}
+                  className="group flex flex-col md:flex-row items-center justify-between p-12 rounded-[3.5rem] border border-black/5 hover:border-primary/20 transition-all duration-700 group cursor-default"
+                >
+                   <div className="flex items-center gap-12 mb-8 md:mb-0">
+                      <div className="text-8xl font-black text-black/[0.03] group-hover:text-primary/10 select-none font-serif italic">
+                         0{i+1}
+                      </div>
+                      <div className="text-left">
+                         <h4 className="text-3xl font-black text-neutral-950 mb-2 tracking-tight">{row.name}</h4>
+                         <p className="text-sm font-bold text-neutral-400 uppercase tracking-widest">{row.sub}</p>
+                      </div>
+                   </div>
+                   <div className="text-right">
+                      <div className="text-4xl font-black text-secondary mb-2">{row.count}</div>
+                      <Link href="/about" className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-primary hover:gap-4 transition-all opacity-0 group-hover:opacity-100">
+                         View Details <ArrowRight className="w-4 h-4" />
+                      </Link>
+                   </div>
+                </motion.div>
+              ))}
+           </div>
+        </div>
+      </section>
+
+      {/* Inspirational Footer */}
+      <section className="py-64 bg-neutral-950 relative overflow-hidden rounded-t-[6rem]">
+         <div className="absolute inset-0 mesh-gradient opacity-10" />
+         <div className="relative z-10 max-w-4xl mx-auto text-center px-10">
+            <Medal className="w-20 h-20 text-secondary mx-auto mb-12 opacity-50" />
+            <h2 className="text-heading text-white text-6xl md:text-[8rem] mb-16">
+               Excellence <br /> <span className="text-primary tracking-tighter">Endures.</span>
+            </h2>
+            <p className="text-2xl text-white/50 font-medium mb-20 leading-relaxed max-w-2xl mx-auto">
+               We celebrate not just the result, but the grit, determination, and consistency that leads to it.
+            </p>
+            <Link 
+               href="/contact-us"
+               className="inline-flex h-24 px-16 bg-white text-neutral-950 rounded-full items-center justify-center font-black text-2xl shadow-editorial hover:bg-primary hover:text-white transition-all group"
+            >
+               Connect with Us
+               <ArrowRight className="ml-6 w-8 h-8 group-hover:translate-x-2 transition-transform" />
+            </Link>
+         </div>
+      </section>
+
+    </div>
+  );
+}

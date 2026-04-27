@@ -1,26 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #175190;
-  --color-secondary: #A41546;
-  --color-accent: #896B85;
-  --color-neutral-bg: #F5F3F2;
-  --color-surface: rgba(255, 255, 255, 0.8);
-  --color-surface-dark: rgba(10, 10, 10, 0.8);
+  --color-primary: #1b3168;
+  --color-secondary: #c21d41;
+  --color-gold: #ea7121;
+  --color-accent: #2a9d8f;
+  --color-neutral-bg: #F9FAFB;
+  --color-surface: rgba(255, 255, 255, 0.9);
   
   --font-outfit: var(--font-outfit);
   --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
 
-  /* Premium Elevation System */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.12);
-  --shadow-premium: 0 20px 50px rgba(0, 0, 0, 0.05), 0 5px 15px rgba(0, 0, 0, 0.02);
-  --shadow-premium-hover: 0 20px 60px rgba(23, 81, 144, 0.12);
+  /* Editorial Elevation System */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 30px 60px rgba(0, 0, 0, 0.08);
+  --shadow-editorial: 0 20px 80px -10px rgba(0, 0, 0, 0.05), 0 10px 30px -5px rgba(0, 0, 0, 0.02);
+  --shadow-premium-hover: 0 40px 100px -20px rgba(23, 81, 144, 0.15);
   
-  --radius-premium: 2.5rem;
-  --radius-button: 1rem;
-  --radius-card: 2rem;
+  --radius-premium: 3.5rem;
+  --radius-button: 1.25rem;
+  --radius-card: 2.5rem;
 
   /* Animation Tokens */
   --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
@@ -28,16 +28,16 @@
 
 @layer base {
   body {
-    @apply bg-[#F9FAFB] text-neutral-900 transition-colors duration-500;
+    @apply bg-neutral-bg text-neutral-950 transition-colors duration-700 antialiased;
   }
 }
 
-@utility glass {
-  @apply backdrop-blur-xl bg-white/70 border border-white/20 shadow-xl;
+@utility glass-white {
+  @apply backdrop-blur-2xl bg-white/80 border border-white/40 shadow-editorial;
 }
 
-@utility glass-dark {
-  @apply backdrop-blur-xl bg-black/80 border border-white/10 shadow-2xl;
+@utility glass-primary {
+  @apply backdrop-blur-2xl bg-primary/95 text-white border border-white/10 shadow-editorial;
 }
 
 @utility noise-bg {
@@ -45,28 +45,38 @@
   filter: contrast(150%) brightness(100%);
 }
 
-@utility shadow-premium {
-  box-shadow: var(--shadow-premium);
+@utility shadow-editorial {
+  box-shadow: var(--shadow-editorial);
 }
 
 @utility rounded-premium {
   border-radius: var(--radius-premium);
 }
 
-:root {
-  --background: var(--color-neutral-bg);
-  --foreground: #171717;
+@utility text-label {
+  @apply text-[11px] font-black uppercase tracking-[0.4em] text-secondary;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@utility text-heading {
+  @apply text-neutral-950 tracking-tighter leading-[1.1] font-black italic font-serif;
+}
+
+@utility mesh-gradient {
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(23, 81, 144, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(164, 21, 70, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(137, 107, 133, 0.05) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(23, 81, 144, 0.05) 0px, transparent 50%);
+}
+
+:root {
+  --background: var(--color-neutral-bg);
+  --foreground: #09090b;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  overflow-x: hidden;
 }
