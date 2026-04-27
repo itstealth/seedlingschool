@@ -105,11 +105,15 @@ export default function Footer() {
              </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
-            {['Privacy', 'Policies', 'Disclosure'].map((item) => (
-              <Link key={item} href={`/${item.toLowerCase()}`} className="text-xs font-black uppercase tracking-[0.2em] text-neutral-400 hover:text-primary transition-colors">
-                {item}
-              </Link>
-            ))}
+            <Link href="/privacy-policy" className="text-xs font-black uppercase tracking-[0.2em] text-neutral-400 hover:text-primary transition-colors">
+              Privacy
+            </Link>
+            <Link href="/terms-and-conditions" className="text-xs font-black uppercase tracking-[0.2em] text-neutral-400 hover:text-primary transition-colors">
+              Policies
+            </Link>
+            <Link href="/mandatory-disclosure" className="text-xs font-black uppercase tracking-[0.2em] text-neutral-400 hover:text-primary transition-colors">
+              Disclosure
+            </Link>
           </div>
         </div>
       </div>
