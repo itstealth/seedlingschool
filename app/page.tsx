@@ -20,7 +20,7 @@ export default function HomePage() {
     <div ref={containerRef} className="bg-neutral-bg min-h-screen relative overflow-x-hidden">
       
       {/* Cinematic Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
         <motion.div 
           style={{ scale: heroScale, opacity: heroOpacity }}
           className="absolute inset-0 z-0"

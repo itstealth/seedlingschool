@@ -92,27 +92,21 @@ export default function Navbar() {
         style={{ scaleX }}
       />
 
-      <header 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-          isScrolled ? "py-4" : "py-8"
-        }`}
-      >
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm border-b border-black/5 transition-all">
         <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
-          <nav className={`relative rounded-full transition-all duration-700 border border-white/40 shadow-editorial ${
-            isScrolled ? "glass-white py-3 px-8" : "bg-transparent py-4 px-10 border-transparent shadow-none"
-          }`}>
+          <nav className="relative py-3">
             <div className="flex items-center justify-between h-14 md:h-16">
               {/* Logo */}
               <div className="flex-shrink-0">
                 <Link href="/" className="flex items-center gap-4 group">
-                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black text-2xl tracking-tighter shadow-lg transition-all duration-500 ${isScrolled ? "bg-primary text-white scale-90" : "bg-white text-primary"}`}>
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-2xl tracking-tighter shadow-sm bg-primary text-white">
                     S
                   </div>
                   <div className="flex flex-col">
-                    <span className={`font-black text-xl leading-none tracking-tight transition-colors ${isScrolled ? "text-neutral-950" : "text-white"}`}>
+                    <span className="font-black text-xl leading-none tracking-tight text-neutral-950">
                       Seedling
                     </span>
-                    <span className={`text-[10px] uppercase tracking-[0.3em] font-black transition-colors ${isScrolled ? "text-secondary" : "text-white/60"}`}>
+                    <span className="text-[10px] uppercase tracking-[0.3em] font-black text-secondary">
                       Group of Schools
                     </span>
                   </div>
@@ -120,18 +114,18 @@ export default function Navbar() {
               </div>
 
               {/* Desktop Navigation */}
-              <nav className="hidden xl:flex items-center gap-2">
+              <nav className="hidden xl:flex items-center gap-1">
                 {navItems.map((item) => (
                   <div key={item.name} className="relative group">
                     {item.subLinks ? (
-                      <button className={`flex items-center gap-1.5 px-4 py-2.5 text-[13px] font-black tracking-tight transition-all rounded-full hover:bg-neutral-50 hover:text-primary whitespace-nowrap ${isScrolled ? "text-neutral-600" : "text-white"}`}>
+                      <button className="flex items-center gap-1 px-3 py-2.5 text-[14px] font-bold transition-all hover:text-primary whitespace-nowrap text-neutral-700">
                         {item.name}
-                        <ChevronDown className={`w-3.5 h-3.5 transition-transform group-hover:rotate-180 opacity-60`} />
+                        <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180 opacity-60" />
                       </button>
                     ) : (
                       <Link
                         href={item.href}
-                        className={`px-4 py-2.5 text-[13px] font-black tracking-tight transition-all rounded-full whitespace-nowrap ${isScrolled ? (pathname === item.href ? "text-primary bg-primary/5" : "text-neutral-600 hover:bg-neutral-50 hover:text-primary") : (pathname === item.href ? "bg-white/10 text-white" : "text-white hover:bg-white/10")}`}
+                        className={`px-3 py-2.5 text-[14px] font-bold transition-all whitespace-nowrap ${pathname === item.href ? "text-primary" : "text-neutral-700 hover:text-primary"}`}
                       >
                         {item.name}
                       </Link>
@@ -139,16 +133,16 @@ export default function Navbar() {
 
                     {/* Dropdown Menu */}
                     {item.subLinks && (
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 w-[280px]">
-                        <div className="relative glass-white overflow-hidden p-3 rounded-[2.5rem] transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 w-[280px]">
+                        <div className="relative bg-white border border-black/5 shadow-xl overflow-hidden p-3 rounded-2xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                           <div className="flex flex-col gap-1">
                             {item.subLinks.map((subLink) => (
                               <Link
                                 key={subLink.name}
                                 href={subLink.href}
-                                className={`flex items-center justify-between px-6 py-4 text-[14px] font-black rounded-2xl transition-all ${
+                                className={`flex items-center justify-between px-6 py-4 text-[14px] font-bold rounded-xl transition-all ${
                                   pathname === subLink.href
-                                    ? "bg-primary text-white shadow-lg"
+                                    ? "bg-primary/5 text-primary"
                                     : "text-neutral-600 hover:bg-neutral-50 hover:text-neutral-950"
                                 }`}
                               >
@@ -168,7 +162,7 @@ export default function Navbar() {
               <div className="hidden xl:flex items-center gap-4">
                 <Link
                   href="/admissions"
-                  className={`px-8 py-3.5 font-black text-sm rounded-full transition-all duration-500 shadow-editorial hover:scale-[1.05] active:scale-95 ${isScrolled ? "bg-neutral-950 text-white hover:bg-primary" : "bg-white text-neutral-950 hover:bg-primary hover:text-white"}`}
+                  className="px-6 py-3 font-bold text-sm rounded-md transition-all shadow-sm hover:shadow-md active:scale-95 whitespace-nowrap flex-shrink-0 bg-primary text-white hover:bg-primary/90"
                 >
                   Apply Now &apos;26
                 </Link>
@@ -178,7 +172,7 @@ export default function Navbar() {
               <div className="xl:hidden flex items-center">
                 <button
                   onClick={() => setIsOpen(true)}
-                  className={`p-3 rounded-2xl ${isScrolled ? "bg-neutral-100 text-neutral-950" : "bg-white/10 text-white"} transition-colors`}
+                  className="p-2 rounded-lg bg-neutral-100 text-neutral-900 transition-colors hover:bg-neutral-200"
                   aria-label="Open menu"
                 >
                   <Menu className="w-6 h-6" />
