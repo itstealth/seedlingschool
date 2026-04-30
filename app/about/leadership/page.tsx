@@ -149,7 +149,7 @@ export default function LeadershipPage() {
               <img
                 src="https://seedlingschools.com/assets/img/sandeep.png"
                 alt="Dr. Sandeep Bakshi, Director Seedling Group"
-                className="w-full h-[560px] object-cover rounded-2xl shadow-2xl object-top"
+                className="w-full md:h-[560px] h-[300px] object-cover rounded-2xl shadow-2xl object-top"
               />
               <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-6 max-w-xs border border-sand">
                 <p className="font-playfair text-lg font-semibold text-text-base">Dr. Sandeep Bakshi</p>
